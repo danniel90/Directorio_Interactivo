@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="primer_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="segundo_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="primer_apellido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="segundo_apellido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearUsuarioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CrearEdificio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearEdificioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CrearNivel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="numero" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearNivelResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CrearLocal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearLocalResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CrearTipoLocal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearTipoLocalResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearUsuario" />
+  </wsdl:message>
+  <wsdl:message name="CrearUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearEdificioSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearEdificio" />
+  </wsdl:message>
+  <wsdl:message name="CrearEdificioSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearEdificioResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearNivelSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearNivel" />
+  </wsdl:message>
+  <wsdl:message name="CrearNivelSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearNivelResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearLocalSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearLocal" />
+  </wsdl:message>
+  <wsdl:message name="CrearLocalSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearLocalResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearTipoLocalSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearTipoLocal" />
+  </wsdl:message>
+  <wsdl:message name="CrearTipoLocalSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearTipoLocalResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DirectorioServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearUsuario">
+      <wsdl:input message="tns:CrearUsuarioSoapIn" />
+      <wsdl:output message="tns:CrearUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearEdificio">
+      <wsdl:input message="tns:CrearEdificioSoapIn" />
+      <wsdl:output message="tns:CrearEdificioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearNivel">
+      <wsdl:input message="tns:CrearNivelSoapIn" />
+      <wsdl:output message="tns:CrearNivelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearLocal">
+      <wsdl:input message="tns:CrearLocalSoapIn" />
+      <wsdl:output message="tns:CrearLocalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearTipoLocal">
+      <wsdl:input message="tns:CrearTipoLocalSoapIn" />
+      <wsdl:output message="tns:CrearTipoLocalSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DirectorioServiceSoap" type="tns:DirectorioServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearUsuario">
+      <soap:operation soapAction="http://tempuri.org/CrearUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearEdificio">
+      <soap:operation soapAction="http://tempuri.org/CrearEdificio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearNivel">
+      <soap:operation soapAction="http://tempuri.org/CrearNivel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearLocal">
+      <soap:operation soapAction="http://tempuri.org/CrearLocal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearTipoLocal">
+      <soap:operation soapAction="http://tempuri.org/CrearTipoLocal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DirectorioServiceSoap12" type="tns:DirectorioServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearUsuario">
+      <soap12:operation soapAction="http://tempuri.org/CrearUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearEdificio">
+      <soap12:operation soapAction="http://tempuri.org/CrearEdificio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearNivel">
+      <soap12:operation soapAction="http://tempuri.org/CrearNivel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearLocal">
+      <soap12:operation soapAction="http://tempuri.org/CrearLocal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearTipoLocal">
+      <soap12:operation soapAction="http://tempuri.org/CrearTipoLocal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DirectorioService">
+    <wsdl:port name="DirectorioServiceSoap" binding="tns:DirectorioServiceSoap">
+      <soap:address location="http://localhost:5925/DirectorioService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DirectorioServiceSoap12" binding="tns:DirectorioServiceSoap12">
+      <soap12:address location="http://localhost:5925/DirectorioService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="directorioModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="directorioModelStoreContainer">
+          <EntitySet Name="EDIFICIO_NIVELES" EntityType="directorioModel.Store.EDIFICIO_NIVELES" store:Type="Tables" />
+          <EntitySet Name="EDIFICIOS" EntityType="directorioModel.Store.EDIFICIOS" store:Type="Tables" />
+          <EntitySet Name="LOCAL_TIPOS" EntityType="directorioModel.Store.LOCAL_TIPOS" store:Type="Tables" />
+          <EntitySet Name="LOCALES" EntityType="directorioModel.Store.LOCALES" store:Type="Tables" />
+          <EntitySet Name="NIVEL_LOCALES" EntityType="directorioModel.Store.NIVEL_LOCALES" store:Type="Tables" />
+          <EntitySet Name="NIVELES" EntityType="directorioModel.Store.NIVELES" store:Type="Tables" />
+          <EntitySet Name="USUARIO_EDIFICIO" EntityType="directorioModel.Store.USUARIO_EDIFICIO" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="directorioModel.Store.USUARIOS" store:Type="Tables" />
+          <AssociationSet Name="FK_EDIFICIO_NIVELES_0" Association="directorioModel.Store.FK_EDIFICIO_NIVELES_0">
+            <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
+            <End Role="EDIFICIO_NIVELES" EntitySet="EDIFICIO_NIVELES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDIFICIO_NIVELES_1" Association="directorioModel.Store.FK_EDIFICIO_NIVELES_1">
+            <End Role="NIVELES" EntitySet="NIVELES" />
+            <End Role="EDIFICIO_NIVELES" EntitySet="EDIFICIO_NIVELES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCALES_0" Association="directorioModel.Store.FK_LOCALES_0">
+            <End Role="LOCAL_TIPOS" EntitySet="LOCAL_TIPOS" />
+            <End Role="LOCALES" EntitySet="LOCALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NIVEL_LOCALES_0" Association="directorioModel.Store.FK_NIVEL_LOCALES_0">
+            <End Role="NIVELES" EntitySet="NIVELES" />
+            <End Role="NIVEL_LOCALES" EntitySet="NIVEL_LOCALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NIVEL_LOCALES_1" Association="directorioModel.Store.FK_NIVEL_LOCALES_1">
+            <End Role="LOCALES" EntitySet="LOCALES" />
+            <End Role="NIVEL_LOCALES" EntitySet="NIVEL_LOCALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_EDIFICIO_0" Association="directorioModel.Store.FK_USUARIO_EDIFICIO_0">
+            <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
+            <End Role="USUARIO_EDIFICIO" EntitySet="USUARIO_EDIFICIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_EDIFICIO_1" Association="directorioModel.Store.FK_USUARIO_EDIFICIO_1">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="USUARIO_EDIFICIO" EntitySet="USUARIO_EDIFICIO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EDIFICIO_NIVELES">
+          <Key>
+            <PropertyRef Name="CODIGO_NIVEL" />
+          </Key>
+          <Property Name="CODIGO_EDIFICIO" Type="integer" Nullable="false" />
+          <Property Name="CODIGO_NIVEL" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDIFICIOS">
+          <Key>
+            <PropertyRef Name="CODIGO_EDIFICIO" />
+          </Key>
+          <Property Name="CODIGO_EDIFICIO" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LOCAL_TIPOS">
+          <Key>
+            <PropertyRef Name="TIPO" />
+          </Key>
+          <Property Name="TIPO" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOCALES">
+          <Key>
+            <PropertyRef Name="CODIGO_LOCAL" />
+          </Key>
+          <Property Name="CODIGO_LOCAL" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="NOMBRE" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="NIVEL_LOCALES">
+          <Key>
+            <PropertyRef Name="CODIGO_LOCAL" />
+          </Key>
+          <Property Name="CODIGO_NIVEL" Type="integer" Nullable="false" />
+          <Property Name="CODIGO_LOCAL" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NIVELES">
+          <Key>
+            <PropertyRef Name="CODIGO_NIVEL" />
+          </Key>
+          <Property Name="CODIGO_NIVEL" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NUMERO" Type="integer" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="USUARIO_EDIFICIO">
+          <Key>
+            <PropertyRef Name="CODIGO_EDIFICIO" />
+          </Key>
+          <Property Name="NOMBRE_USUARIO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CODIGO_EDIFICIO" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="NOMBRE_USUARIO" />
+          </Key>
+          <Property Name="NOMBRE_USUARIO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PRIMER_NOMBRE" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SEGUNDO_NOMBRE" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PRIMER_APELLIDO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SEGUNDO_APELLIDO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="PASSWORD" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_EDIFICIO_NIVELES_0">
+          <End Role="EDIFICIOS" Type="directorioModel.Store.EDIFICIOS" Multiplicity="1" />
+          <End Role="EDIFICIO_NIVELES" Type="directorioModel.Store.EDIFICIO_NIVELES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDIFICIOS">
+              <PropertyRef Name="CODIGO_EDIFICIO" />
+            </Principal>
+            <Dependent Role="EDIFICIO_NIVELES">
+              <PropertyRef Name="CODIGO_EDIFICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDIFICIO_NIVELES_1">
+          <End Role="NIVELES" Type="directorioModel.Store.NIVELES" Multiplicity="1" />
+          <End Role="EDIFICIO_NIVELES" Type="directorioModel.Store.EDIFICIO_NIVELES" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="NIVELES">
+              <PropertyRef Name="CODIGO_NIVEL" />
+            </Principal>
+            <Dependent Role="EDIFICIO_NIVELES">
+              <PropertyRef Name="CODIGO_NIVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCALES_0">
+          <End Role="LOCAL_TIPOS" Type="directorioModel.Store.LOCAL_TIPOS" Multiplicity="1" />
+          <End Role="LOCALES" Type="directorioModel.Store.LOCALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCAL_TIPOS">
+              <PropertyRef Name="TIPO" />
+            </Principal>
+            <Dependent Role="LOCALES">
+              <PropertyRef Name="TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NIVEL_LOCALES_0">
+          <End Role="NIVELES" Type="directorioModel.Store.NIVELES" Multiplicity="1" />
+          <End Role="NIVEL_LOCALES" Type="directorioModel.Store.NIVEL_LOCALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NIVELES">
+              <PropertyRef Name="CODIGO_NIVEL" />
+            </Principal>
+            <Dependent Role="NIVEL_LOCALES">
+              <PropertyRef Name="CODIGO_NIVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NIVEL_LOCALES_1">
+          <End Role="LOCALES" Type="directorioModel.Store.LOCALES" Multiplicity="1" />
+          <End Role="NIVEL_LOCALES" Type="directorioModel.Store.NIVEL_LOCALES" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOCALES">
+              <PropertyRef Name="CODIGO_LOCAL" />
+            </Principal>
+            <Dependent Role="NIVEL_LOCALES">
+              <PropertyRef Name="CODIGO_LOCAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_EDIFICIO_0">
+          <End Role="EDIFICIOS" Type="directorioModel.Store.EDIFICIOS" Multiplicity="1" />
+          <End Role="USUARIO_EDIFICIO" Type="directorioModel.Store.USUARIO_EDIFICIO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EDIFICIOS">
+              <PropertyRef Name="CODIGO_EDIFICIO" />
+            </Principal>
+            <Dependent Role="USUARIO_EDIFICIO">
+              <PropertyRef Name="CODIGO_EDIFICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_EDIFICIO_1">
+          <End Role="USUARIOS" Type="directorioModel.Store.USUARIOS" Multiplicity="1" />
+          <End Role="USUARIO_EDIFICIO" Type="directorioModel.Store.USUARIO_EDIFICIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="NOMBRE_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_EDIFICIO">
+              <PropertyRef Name="NOMBRE_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="directorioModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="directorioEntities">
+          <EntitySet Name="EDIFICIOS" EntityType="directorioModel.EDIFICIO" />
+          <EntitySet Name="TIPO_LOCAL" EntityType="directorioModel.TIPO_LOCAL" />
+          <EntitySet Name="LOCALES" EntityType="directorioModel.LOCAL" />
+          <EntitySet Name="NIVELES" EntityType="directorioModel.NIVEL" />
+          <EntitySet Name="USUARIOS" EntityType="directorioModel.USUARIO" />
+          <AssociationSet Name="FK_LOCALES_0" Association="directorioModel.FK_LOCALES_0">
+            <End Role="LOCAL_TIPOS" EntitySet="TIPO_LOCAL" />
+            <End Role="LOCALES" EntitySet="LOCALES" />
+          </AssociationSet>
+          <AssociationSet Name="EDIFICIO_NIVELES" Association="directorioModel.EDIFICIO_NIVELES">
+            <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
+            <End Role="NIVELES" EntitySet="NIVELES" />
+          </AssociationSet>
+          <AssociationSet Name="NIVEL_LOCALES" Association="directorioModel.NIVEL_LOCALES">
+            <End Role="NIVELES" EntitySet="NIVELES" />
+            <End Role="LOCALES" EntitySet="LOCALES" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIO_EDIFICIO" Association="directorioModel.USUARIO_EDIFICIO">
+            <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EDIFICIO">
+          <Key>
+            <PropertyRef Name="CODIGO_EDIFICIO" />
+          </Key>
+          <Property Name="CODIGO_EDIFICIO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="NIVELES" Relationship="directorioModel.EDIFICIO_NIVELES" FromRole="EDIFICIOS" ToRole="NIVELES" />
+          <NavigationProperty Name="USUARIO" Relationship="directorioModel.USUARIO_EDIFICIO" FromRole="EDIFICIOS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="TIPO_LOCAL">
+          <Key>
+            <PropertyRef Name="TIPO" />
+          </Key>
+          <Property Name="TIPO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="LOCALES" Relationship="directorioModel.FK_LOCALES_0" FromRole="LOCAL_TIPOS" ToRole="LOCALES" />
+        </EntityType>
+        <EntityType Name="LOCAL">
+          <Key>
+            <PropertyRef Name="CODIGO_LOCAL" />
+          </Key>
+          <Property Name="CODIGO_LOCAL" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="LOCAL_TIPOS" Relationship="directorioModel.FK_LOCALES_0" FromRole="LOCALES" ToRole="LOCAL_TIPOS" />
+          <NavigationProperty Name="NIVELE" Relationship="directorioModel.NIVEL_LOCALES" FromRole="LOCALES" ToRole="NIVELES" />
+        </EntityType>
+        <EntityType Name="NIVEL">
+          <Key>
+            <PropertyRef Name="CODIGO_NIVEL" />
+          </Key>
+          <Property Name="CODIGO_NIVEL" Type="Int64" Nullable="false" />
+          <Property Name="NUMERO" Type="Int64" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="EDIFICIO" Relationship="directorioModel.EDIFICIO_NIVELES" FromRole="NIVELES" ToRole="EDIFICIOS" />
+          <NavigationProperty Name="LOCALES" Relationship="directorioModel.NIVEL_LOCALES" FromRole="NIVELES" ToRole="LOCALES" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="NOMBRE_USUARIO" />
+          </Key>
+          <Property Name="NOMBRE_USUARIO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PRIMER_NOMBRE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SEGUNDO_NOMBRE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PRIMER_APELLIDO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SEGUNDO_APELLIDO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="EDIFICIOS" Relationship="directorioModel.USUARIO_EDIFICIO" FromRole="USUARIOS" ToRole="EDIFICIOS" />
+        </EntityType>
+        <Association Name="FK_LOCALES_0">
+          <End Role="LOCAL_TIPOS" Type="directorioModel.TIPO_LOCAL" Multiplicity="1" />
+          <End Role="LOCALES" Type="directorioModel.LOCAL" Multiplicity="*" />
+        </Association>
+        <Association Name="EDIFICIO_NIVELES">
+          <End Role="EDIFICIOS" Type="directorioModel.EDIFICIO" Multiplicity="0..1" />
+          <End Role="NIVELES" Type="directorioModel.NIVEL" Multiplicity="*" />
+        </Association>
+        <Association Name="NIVEL_LOCALES">
+          <End Role="NIVELES" Type="directorioModel.NIVEL" Multiplicity="0..1" />
+          <End Role="LOCALES" Type="directorioModel.LOCAL" Multiplicity="*" />
+        </Association>
+        <Association Name="USUARIO_EDIFICIO">
+          <End Role="EDIFICIOS" Type="directorioModel.EDIFICIO" Multiplicity="*" />
+          <End Role="USUARIOS" Type="directorioModel.USUARIO" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="directorioModelStoreContainer" CdmEntityContainer="directorioEntities">
+          <EntitySetMapping Name="EDIFICIOS"><EntityTypeMapping TypeName="directorioModel.EDIFICIO"><MappingFragment StoreEntitySet="EDIFICIOS">
+            <ScalarProperty Name="CODIGO_EDIFICIO" ColumnName="CODIGO_EDIFICIO" />
+            <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+            <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TIPO_LOCAL"><EntityTypeMapping TypeName="directorioModel.TIPO_LOCAL"><MappingFragment StoreEntitySet="LOCAL_TIPOS">
+            <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LOCALES"><EntityTypeMapping TypeName="directorioModel.LOCAL"><MappingFragment StoreEntitySet="LOCALES">
+            <ScalarProperty Name="CODIGO_LOCAL" ColumnName="CODIGO_LOCAL" />
+            <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+            <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="NIVELES"><EntityTypeMapping TypeName="directorioModel.NIVEL"><MappingFragment StoreEntitySet="NIVELES">
+            <ScalarProperty Name="CODIGO_NIVEL" ColumnName="CODIGO_NIVEL" />
+            <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+            <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS"><EntityTypeMapping TypeName="directorioModel.USUARIO"><MappingFragment StoreEntitySet="USUARIOS">
+            <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+            <ScalarProperty Name="PRIMER_NOMBRE" ColumnName="PRIMER_NOMBRE" />
+            <ScalarProperty Name="SEGUNDO_NOMBRE" ColumnName="SEGUNDO_NOMBRE" />
+            <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
+            <ScalarProperty Name="SEGUNDO_APELLIDO" ColumnName="SEGUNDO_APELLIDO" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_LOCALES_0" TypeName="directorioModel.FK_LOCALES_0" StoreEntitySet="LOCALES">
+            <EndProperty Name="LOCAL_TIPOS">
+              <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+            </EndProperty>
+            <EndProperty Name="LOCALES">
+              <ScalarProperty Name="CODIGO_LOCAL" ColumnName="CODIGO_LOCAL" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="EDIFICIO_NIVELES" TypeName="directorioModel.EDIFICIO_NIVELES" StoreEntitySet="EDIFICIO_NIVELES">
+            <EndProperty Name="EDIFICIOS">
+              <ScalarProperty Name="CODIGO_EDIFICIO" ColumnName="CODIGO_EDIFICIO" />
+            </EndProperty>
+            <EndProperty Name="NIVELES">
+              <ScalarProperty Name="CODIGO_NIVEL" ColumnName="CODIGO_NIVEL" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="NIVEL_LOCALES" TypeName="directorioModel.NIVEL_LOCALES" StoreEntitySet="NIVEL_LOCALES">
+            <EndProperty Name="NIVELES">
+              <ScalarProperty Name="CODIGO_NIVEL" ColumnName="CODIGO_NIVEL" />
+            </EndProperty>
+            <EndProperty Name="LOCALES">
+              <ScalarProperty Name="CODIGO_LOCAL" ColumnName="CODIGO_LOCAL" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="USUARIO_EDIFICIO" TypeName="directorioModel.USUARIO_EDIFICIO" StoreEntitySet="USUARIO_EDIFICIO">
+            <EndProperty Name="EDIFICIOS">
+              <ScalarProperty Name="CODIGO_EDIFICIO" ColumnName="CODIGO_EDIFICIO" />
+            </EndProperty>
+            <EndProperty Name="USUARIOS">
+              <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DirectorioModel">
+        <EntityTypeShape EntityType="directorioModel.EDIFICIO" Width="1.5" PointX="0.75" PointY="1.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="directorioModel.TIPO_LOCAL" Width="1.5" PointX="7.25" PointY="2.25" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="directorioModel.LOCAL" Width="1.5" PointX="5.25" PointY="1.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="directorioModel.NIVEL" Width="1.5" PointX="3" PointY="1.125" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="directorioModel.USUARIO" Width="1.5" PointX="3" PointY="3.875" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="directorioModel.FK_LOCALES_0" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="2.25" />
+          <ConnectorPoint PointX="6.75" PointY="1.525" />
+        </AssociationConnector>
+        <AssociationConnector Association="directorioModel.EDIFICIO_NIVELES" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.325" />
+          <ConnectorPoint PointX="3" PointY="1.325" />
+        </AssociationConnector>
+        <AssociationConnector Association="directorioModel.NIVEL_LOCALES" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.325" />
+          <ConnectorPoint PointX="5.25" PointY="1.325" />
+        </AssociationConnector>
+        <AssociationConnector Association="directorioModel.USUARIO_EDIFICIO" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="1.525" />
+          <ConnectorPoint PointX="1.5" PointY="4.075" />
+          <ConnectorPoint PointX="3" PointY="4.075" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

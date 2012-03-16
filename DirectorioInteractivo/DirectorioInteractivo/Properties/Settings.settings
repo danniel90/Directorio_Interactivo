@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DirectorioInteractivo.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DirectorioInteractivo_DirectorioWebService_DirectorioService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:5925/DirectorioService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
